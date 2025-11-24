@@ -4,6 +4,15 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.Stack;
 
+/**
+ *  @author phoenix </br>
+ * <b> class Solution </b> 
+ * </br>
+ * <p> Find if brackets are balanced using a Stack data structure </p>
+ * 
+ *
+ * 
+ */
 public class Solution {
 
 	static Stack<String> stack = new Stack<>();
@@ -20,6 +29,12 @@ public class Solution {
 		}
 		
 	}
+	/**
+	 * The isBalanced method accepts a String and returns a true / false depending on if the 
+	 * brackets in the string are 'balanced'
+	 * @param String
+	 * @return boolean
+	 */
 	
 	private static boolean isBalanced(String line) {
 		Stack<Character> stack = new Stack<>();

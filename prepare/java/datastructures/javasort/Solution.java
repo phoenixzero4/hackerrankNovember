@@ -44,7 +44,7 @@ public class Solution
 			
 			testCases--;
 		}
-      
+      in.close();
       	for(Student st: studentList){
 			System.out.println(st.getFname());
 		}

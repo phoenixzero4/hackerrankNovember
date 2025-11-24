@@ -2,7 +2,6 @@ package prepare.java.datastructures.javamap;
 
 //Complete this code or write your own from scratch
 import java.util.*;
-import java.io.*;
 
 class Solution{
   
