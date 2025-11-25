@@ -1,56 +1,56 @@
-/**
- * 
- */
 package prepare.java.datastructures.javasort;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+import java.util.Scanner;
 
 class Student{
-	private int id;
-	private String fname;
-	private double cgpa;
-	public Student(int id, String fname, double cgpa) {
-		super();
+	int id; 
+	String fname;
+	double cgpa;
+	
+	Student(int id, String fname, double cgpa){
 		this.id = id;
 		this.fname = fname;
 		this.cgpa = cgpa;
 	}
-	public int getId() {
-		return id;
-	}
-	public String getFname() {
-		return fname;
-	}
-	public double getCgpa() {
-		return cgpa;
-	}
 }
 
-//Complete the code
-public class Solution
-{
-	public static void main(String[] args){
+public class Solution{
+	public static void main(String[] args) {
 		Scanner in = new Scanner(System.in);
-		int testCases = Integer.parseInt(in.nextLine());
 		
-		List<Student> studentList = new ArrayList<Student>();
-		while(testCases>0){
+		int n = in.nextInt();
+		List<Student> students = new ArrayList<>();
+		
+		for (int i = 0; i < n; i++) {
 			int id = in.nextInt();
-			String fname = in.next();
+			String name = in.next();
 			double cgpa = in.nextDouble();
-			
-			Student st = new Student(id, fname, cgpa);
-			studentList.add(st);
-			
-			testCases--;
+		     students.add(new Student(id, name, cgpa)); // Add to list
 		}
-      in.close();
-      	for(Student st: studentList){
-			System.out.println(st.getFname());
+		
+		Comparator<Student> cmp = (a,b) -> {
+			int byCgpa = Double.compare(b.cgpa, a.cgpa);
+			
+			if(byCgpa != 0) return byCgpa;
+			
+			int byName = a.fname.compareTo(b.fname);
+			
+			if(byName != 0) return byName;
+			
+			return Integer.compare(a.id, b.id);
+			
+			
+		};
+		
+		Collections.sort(students, cmp);
+		
+		for(Student s: students) {
+			System.out.println(s.fname);
 		}
+		in.close();
 	}
 }
-
-
-
-
