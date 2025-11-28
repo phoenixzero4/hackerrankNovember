@@ -1,46 +1,58 @@
 package prepare.java.datastructures.javaarrayp2;
 
+import java.util.ArrayDeque;
+import java.util.Deque;
 import java.util.Scanner;
 
 public class Solution {
 
-    public static boolean canWin(int leap, int[] line, int n) {
+	public static boolean canWin(int leap, int[] game) {
+	
+		boolean[] seen = new boolean[game.length];
+		Deque<Integer> stack = new ArrayDeque<>();
+		stack.push(0);
+		
+		while(!stack.isEmpty()) {
+			int i = stack.pop();
+			
+			if(i < 0) continue;
+			
+			if(i >= game.length) return true;
+			
+			if(seen[i]) continue;
+			
+			if(game[i] == 1) continue;
+			
+			seen[i] = true;
+			
+			stack.push(i + leap);
+			stack.push(i+1);;
+			stack.push(i-1);
+		}
+		return false;
+		
+	}
+	
+   public static void main(String[] args) {
+	   
+	   Scanner in = new Scanner(System.in);
+	   int q = in.nextInt();
+	   
+	   while(q-- > 0) {
+		   int n = in.nextInt();
+		   int leap = in.nextInt();
+		   int[] game = new int[n];
+		   
+		   for(int i = 0; i < n; i++) {
+			   game[i] = in.nextInt();
+		   }
+		   
+		   System.out.println( (canWin(leap, game) == true) ? "YES" : "NO");
+	   }
+	   in.close();
         
-        int cur = 0;
+     
         
-        boolean playing = true;
-        while(playing) {
-            if((cur + 1 < n  && line[cur+1]==1) && (cur + leap < n && line[cur+leap]==1)){
-            //	System.out.println("cur: " + cur + "line[cur+1] " + line[cur+1] + " cur+1 " + cur+1);
-            	return false;
-            	              
-            }
-            else if(cur + leap >= n || cur + 1 >= n) return true;
-            else if(line[cur + leap]==0) cur = cur +leap;
-            else if(line[cur + 1]==0) cur++;
-            else{
-                return false;
-            }
-        }
-        return false;
-    }
-    public static void main(String[] args) {
-        
-        Scanner in = new Scanner(System.in);
-        int q = in.nextInt();
-        
-        
-        for(int j = 0; j < q; j++) {
-        int n = in.nextInt();
-        int leap = in.nextInt();
-        int[] line = new int[n];
-        for(int i = 0; i < n; i++) {
-        	line[i] = in.nextInt();
-        	System.err.println(line[i] + " ");
-        }System.err.println();
-       if(canWin(leap,line,n)) System.out.println("YES");
-       else System.out.println("NO");
-        }
     }
 
 }

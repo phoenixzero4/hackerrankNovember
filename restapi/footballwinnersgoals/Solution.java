@@ -1,25 +1,17 @@
 
 package restapi.footballwinnersgoals;
 
-import java.io.*;
-import java.math.*;
-import java.security.*;
-import java.text.*;
-import java.util.*;
-import java.util.concurrent.*;
-import java.util.function.*;
-import java.util.regex.*;
-import java.util.stream.*;
-import static java.util.stream.Collectors.joining;
-import static java.util.stream.Collectors.toList;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;                             // import for handling IO exceptions
+import java.io.InputStreamReader;
 import java.net.URI;                                    // import for building URIs
+import java.net.URLEncoder;                             // import for URL encoding
 import java.net.http.HttpClient;                        // import for HTTP client
 import java.net.http.HttpRequest;                       // import for HTTP request
 import java.net.http.HttpResponse;                      // import for HTTP response
-import java.net.URLEncoder;                             // import for URL encoding
 import java.nio.charset.StandardCharsets;               // import for UTF-8 charset
-import com.google.gson.*;                                // import Gson for JSON parsing
 
 class Result {                                          // class container provided by the platform
     // Complete the function below
